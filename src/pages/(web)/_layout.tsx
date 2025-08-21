@@ -9,7 +9,11 @@ export default function App() {
             <Wrapper />
             <ContentWrapper>
                 <NavbarWrapper>
-                    <span>Navbar</span>
+                    <div className='flex flex-col'>
+                        <span className='mb-1 leading-none font-bold text-sm text-neutral-900'>Welcome back, John</span>
+                        <span className='text-neutral-500 text-xs leading-none'>Your dashboard detail today</span>
+                    </div>
+                    <div className='h-8 w-8 rounded-lg border border-brand-500'></div>
                 </NavbarWrapper>
                 <Outlet />
             </ContentWrapper>
