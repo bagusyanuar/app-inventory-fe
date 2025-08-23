@@ -8,7 +8,7 @@ export default function App() {
     return (
         <section className='w-full h-dvh bg-gray-50'>
             <SidebarWrapper>
-                <div className='px-5 h-[4.5rem] flex items-center gap-1'>
+                <div className='px-5 h-[4rem] flex items-center gap-1'>
                     <img src='./src/assets/logo.png' className='h-8 aspect[1/1]' />
                     <span className='text-sm font-semibold'>Inventory</span>
                 </div>
@@ -34,11 +34,14 @@ export default function App() {
             <ContentWrapper>
                 <NavbarWrapper>
                     <div className='flex flex-col'>
-                        <span className='mb-1 font-bold text-md text-neutral-900'>Welcome back, John</span>
+                        <span className='mb-0 font-bold text-md text-neutral-700'>Welcome back, John</span>
                         <span className='text-neutral-500 text-xs leading-none'>Your dashboard detail today</span>
                     </div>
-                    <div className='h-8 w-8 rounded-lg'>
-                        <img src='https://i.pravatar.cc/300' className='rounded-lg border border-brand-500' />
+                    <div className='flex items-center gap-1.5 cursor-pointer'>
+                        <div className='h-8 w-8 rounded-lg'>
+                            <img src='https://i.pravatar.cc/300' className='rounded-lg' />
+                        </div>
+                        <span className='text-xs text-neutral-700 font-semibold'>John</span>
                     </div>
                 </NavbarWrapper>
                 <Outlet />
