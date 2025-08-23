@@ -4,7 +4,7 @@ const Wrapper: React.FC<IWrapper> = ({
     children
 }) => {
     return (
-        <main className='ps-64'>
+        <main className='ps-60'>
             {children}
         </main>
     )

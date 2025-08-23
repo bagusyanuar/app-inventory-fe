@@ -4,7 +4,7 @@ const Wrapper: React.FC<IWrapper> = ({
     children
 }) => {
     return (
-        <nav className='w-full h-16 px-3 flex items-center justify-between bg-white border-b border-gray-300'>
+        <nav className='w-full h-[4.5rem] px-5 flex items-center justify-between bg-white border-b border-gray-300'>
             {children}
         </nav>
     )
