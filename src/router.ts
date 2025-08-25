@@ -8,6 +8,7 @@ export type Path =
   | `/dashboard`
   | `/master`
   | `/master/features/tabs`
+  | `/warehouse`
 
 export type Params = {
   

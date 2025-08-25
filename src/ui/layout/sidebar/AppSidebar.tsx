@@ -9,25 +9,15 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarMenuSub,
-    SidebarMenuSubItem
 } from '@/ui/components/shadcn/ui/sidebar'
 import {
-    ChevronRight,
-    Store,
     Box,
     FolderArchiveIcon,
     LayoutDashboard,
-    UserCog,
     BaggageClaim,
-    NotebookText,
-    Blocks,
-    Truck,
-    Tag,
-    Repeat,
-    Wallet,
-    CircleDollarSign
 } from "lucide-react"
+import SidebarTree from './SidebarTree'
+import SidebarItem from './SidebarItem'
 
 const AppSidebar = () => {
     return (
@@ -45,48 +35,37 @@ const AppSidebar = () => {
             <SidebarContent className='px-3'>
                 <SidebarGroup>
                     <SidebarGroupContent>
-                        <SidebarMenu>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton
-                                    asChild
-                                    size="lg"
-                                    className='px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in'
-                                >
-                                    <a href="/dashboard">
-                                        <LayoutDashboard />
-                                        <span className='font-semibold'>Dashboard</span>
-                                    </a>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
-                        <SidebarMenu>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton
-                                    asChild
-                                    size="lg"
-                                    className='px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in'
-                                >
-                                    <a href="/master">
-                                        <FolderArchiveIcon />
-                                        <span className='font-semibold'>Master Data</span>
-                                    </a>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
-                        <SidebarMenu>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton
-                                    asChild
-                                    size="lg"
-                                    className='px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in'
-                                >
-                                    <a href="/product">
-                                        <Box />
-                                        <span className='font-semibold'>Products</span>
-                                    </a>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
+                        <SidebarItem 
+                            text='Dashboard'
+                            to='/dashboard'
+                            icon={<LayoutDashboard />}
+                        />
+                        <SidebarGroupLabel>Menu</SidebarGroupLabel>
+                        <SidebarTree
+                            text='Master Data'
+                            icon={<FolderArchiveIcon />}
+                            isActive={false}
+                            children={[
+                                {
+                                    text: 'Warehouse',
+                                    to: '/warehouse'
+                                },
+                                {
+                                    text: 'Unit',
+                                    to: '#'
+                                },
+                                {
+                                    text: 'Category',
+                                    to: '#'
+                                }
+                            ]}
+                        />
+                        <SidebarItem 
+                            text='Products'
+                            to='/product'
+                            icon={<Box />}
+                        />
+                        <SidebarGroupLabel>Inventory</SidebarGroupLabel>
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <SidebarMenuButton
