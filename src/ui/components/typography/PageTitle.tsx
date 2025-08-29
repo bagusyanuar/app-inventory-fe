@@ -5,7 +5,7 @@ const PageTitle: React.FC<IPageTitle> = ({
     text
 }) => {
     return (
-        <h1 className='text-2xl text-neutral-700 font-semibold'>{text}</h1>
+        <h1 className='text-xl text-neutral-700 font-semibold'>{text}</h1>
     )
 }
 
