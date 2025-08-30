@@ -9,12 +9,19 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarFooter
 } from '@/ui/components/shadcn/ui/sidebar'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/ui/components/shadcn/ui/popover"
 import {
     Box,
     FolderArchiveIcon,
     LayoutDashboard,
     BaggageClaim,
+    ChevronsUpDown
 } from "lucide-react"
 import SidebarTree from './SidebarTree'
 import SidebarItem from './SidebarItem'
@@ -23,7 +30,7 @@ const AppSidebar = () => {
     return (
         <Sidebar>
             <SidebarHeader
-                className='px-3 py-0 h-[4rem] justify-center'
+                className='px-0 py-0 h-[4rem] justify-center'
             >
                 <div className='px-5 flex items-center justify-between gap-1 w-full'>
                     <div className='flex items-center gap-1'>
@@ -65,7 +72,7 @@ const AppSidebar = () => {
                             to='/product'
                             icon={<Box />}
                         />
-                        <SidebarGroupLabel>Inventory</SidebarGroupLabel>
+                        <SidebarGroupLabel className='px-4'>Inventory</SidebarGroupLabel>
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <SidebarMenuButton
@@ -83,6 +90,26 @@ const AppSidebar = () => {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
+            <SidebarFooter className='px-6'>
+                <Popover>
+                    <PopoverTrigger asChild className='cursor-pointer'>
+                        <div className='w-full flex justify-between items-center'>
+                            <div className='flex-1 flex items-center gap-3'>
+                                <div className='h-8 w-8 rounded-lg'>
+                                    <img src='https://i.pravatar.cc/300' className='rounded-lg' />
+                                </div>
+                                <div className='flex flex-col'>
+                                    <span className='text-xs font-semibold'>admin@gmail.com</span>
+                                    <span className='text-xs'>Administrator</span>
+                                </div>
+                            </div>
+                            <ChevronsUpDown size={14} />
+                        </div>
+                    </PopoverTrigger>
+                    <PopoverContent className='w-80 border border-neutral-300' side='right' align='end'>
+                    </PopoverContent>
+                </Popover>
+            </SidebarFooter>
         </Sidebar>
     )
 }
