@@ -28,12 +28,16 @@ const SidebarTree: React.FC<ISidebarTree> = ({
                     >
                         <SidebarMenuButton
                             size="lg"
-                            // className="px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 data-[state=open]:bg-brand-50 data-[state=open]:text-brand-500 data-[active=true]:bg-brand-50 data-[active=true]:text-brand-500 data-[state=open]:hover:bg-brand-50 data-[state=open]:hover:text-brand-500 transition-all duration-200 ease-in"
+                            className='px-4 relative group/item'
                             isActive={isActive}
                         >
                             {icon || <Circle />}
                             <span className='font-semibold'>{text}</span>
                             <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                            <span
+                            className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r bg-lime-400 
+                            opacity-0 group-hover/item:opacity-100 transition-all duration-200"
+                        />
                         </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>

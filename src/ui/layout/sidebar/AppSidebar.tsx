@@ -32,15 +32,15 @@ const AppSidebar = () => {
                     </div>
                 </div>
             </SidebarHeader>
-            <SidebarContent className='px-3'>
+            <SidebarContent className='px-0'>
                 <SidebarGroup>
                     <SidebarGroupContent>
-                        <SidebarItem 
+                        <SidebarItem
                             text='Dashboard'
                             to='/dashboard'
                             icon={<LayoutDashboard />}
                         />
-                        <SidebarGroupLabel>Menu</SidebarGroupLabel>
+                        <SidebarGroupLabel className='px-4'>Menu</SidebarGroupLabel>
                         <SidebarTree
                             text='Master Data'
                             icon={<FolderArchiveIcon />}
@@ -60,7 +60,7 @@ const AppSidebar = () => {
                                 }
                             ]}
                         />
-                        <SidebarItem 
+                        <SidebarItem
                             text='Products'
                             to='/product'
                             icon={<Box />}
