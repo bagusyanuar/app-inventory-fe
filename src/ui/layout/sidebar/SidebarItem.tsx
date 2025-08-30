@@ -22,7 +22,7 @@ const SidebarItem: React.FC<ISidebarItem> = ({
                     isActive={isActive}
                     asChild
                     size="lg"
-                    className='px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in'
+                    // className='px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in'
                 >
                     <Link to={to}>
                         {icon || <Circle />}

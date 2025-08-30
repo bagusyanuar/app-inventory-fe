@@ -30,6 +30,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/ui/components/shadcn/ui/table"
+import {Button} from '@/ui/components/shadcn/ui/button';
 
 type TWarehouse = {
     id: string;
@@ -86,8 +87,8 @@ export default function WarehousePage() {
             </div>
             <div className='w-full p-6 bg-white rounded-lg shadow-xl border border-neutral-300'>
                 <p className='text text-neutral-700 font-semibold mb-3'>Data Warehouse</p>
-                <div className='w-full flex items-center justify-between mb-3'>
-                    <div className='flex items-center border border-neutral-500 rounded-md min-w-48'>
+                <div className='w-full flex items-center justify-between mb-5'>
+                    <div className='flex items-center border border-neutral-300 rounded-md min-w-48'>
                         <div className='mx-2.5 text-neutral-700'>
                             <LuSearch size={14} />
                         </div>
@@ -96,11 +97,12 @@ export default function WarehousePage() {
                             className='flex-1 py-2 focus:ring-0 focus:outline-none text-sm text-neutral-700'
                         />
                     </div>
-                    <button className='rounded-md text-sm text-white py-2 px-3.5 bg-brand-700 shadow-md border border-brand-700 cursor-pointer hover:bg-brand-800 hover:border-brand-800 transition-all duration-200 ease-in'>
+                    <button className='rounded-md text-sm text-white py-2 px-3.5 bg-brand-500 shadow-md border border-brand-700 cursor-pointer hover:bg-brand-800 hover:border-brand-800 transition-all duration-200 ease-in'>
                         <span>Add Warehouse</span>
                     </button>
                 </div>
-                <div className='overflow-hidden rounded-md border'>
+                
+                <div className='overflow-hidden rounded-md border border-neutral-300'>
                     <Table>
                         <TableHeader>
                             {

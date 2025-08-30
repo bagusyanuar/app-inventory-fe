@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,7 +6,7 @@
 
 :root {
   --brand-50: #386641;
-  --brand-500: #386641;
+  --brand-500: #032313;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -14,7 +14,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.2274 0.0492 157.66);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -31,13 +31,13 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(100% 0.00011 271.152);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar: oklch(0.2274 0.0492 157.66);
+  --sidebar-foreground: oklch(0.785 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border: oklch(0.444 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
 
@@ -47,7 +47,7 @@
   --color-brand-200: #97C99A;
   --color-brand-300: #6FBA74;
   --color-brand-400: #51A359;
-  --color-brand-500: #386641;
+  --color-brand-500: #032313;
   --color-brand-600: #2F5035;
   --color-brand-700: #253D2B;
   --color-brand-800: #1B2920;
@@ -90,7 +90,7 @@
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 /* :root {

@@ -28,7 +28,7 @@ const SidebarTree: React.FC<ISidebarTree> = ({
                     >
                         <SidebarMenuButton
                             size="lg"
-                            className="px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 data-[state=open]:bg-brand-50 data-[state=open]:text-brand-500 data-[active=true]:bg-brand-50 data-[active=true]:text-brand-500 data-[state=open]:hover:bg-brand-50 data-[state=open]:hover:text-brand-500 transition-all duration-200 ease-in"
+                            // className="px-3 text-neutral-700 hover:bg-brand-50 hover:text-brand-500 data-[state=open]:bg-brand-50 data-[state=open]:text-brand-500 data-[active=true]:bg-brand-50 data-[active=true]:text-brand-500 data-[state=open]:hover:bg-brand-50 data-[state=open]:hover:text-brand-500 transition-all duration-200 ease-in"
                             isActive={isActive}
                         >
                             {icon || <Circle />}
@@ -41,7 +41,7 @@ const SidebarTree: React.FC<ISidebarTree> = ({
                             return <SidebarMenuSub key={k}>
                                 <SidebarMenuSubItem>
                                     <SidebarMenuButton
-                                        className="cursor-pointer text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in"
+                                        // className="cursor-pointer text-neutral-700 hover:bg-brand-50 hover:text-brand-500 transition-all duration-200 ease-in"
                                         size="default"
                                     >
                                         <Link to={child.to || "#"}>
