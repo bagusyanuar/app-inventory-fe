@@ -1,42 +1,12 @@
-import { PageTitle, PageSubTitle } from '@/ui/components/typography'
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/ui/components/shadcn/ui/breadcrumb"
-import { Link } from 'react-router-dom'
-
-import { LuArrowUpDown, LuSquarePlus, LuFilter, LuEllipsisVertical } from 'react-icons/lu'
-import {
-    ColumnDef,
-    ColumnFiltersState,
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    SortingState,
-    useReactTable,
-    VisibilityState,
-} from "@tanstack/react-table"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/ui/components/shadcn/ui/table"
+import { LuSquarePlus, LuFilter, LuEllipsisVertical } from 'react-icons/lu'
 import {
     DropdownMenu,
     DropdownMenuTrigger,
+    DropdownMenuContent
 
 } from '@/ui/components/shadcn/ui/dropdown-menu'
-import { Button } from '@/ui/components/shadcn/ui/button';
-import { LucideEllipsisVertical } from 'lucide-react'
+import { Table } from '@/ui/components/table'
+import type { TColumns } from '@/ui/components/table/types'
 
 type TWarehouse = {
     id: string;
@@ -54,49 +24,37 @@ const data: TWarehouse[] = [
     },
 ]
 
-const columns: ColumnDef<TWarehouse>[] = [
+const columns: TColumns<TWarehouse>[] = [
     {
-        accessorKey: "name",
-        header: ({ column }) => {
-            return (
-                <div className='text-sm flex items-center gap-1 cursor-pointer'>
-                    <span>Name</span>
-                    <LuArrowUpDown size={14} />
-                </div>
-            )
-        },
-        cell: ({ row }) => <div className='text-sm'>{row.getValue('name')}</div>
+        header: "Warehouse Name",
+        cell: (row) => row.name,
+        width: "min-w-72",
+        align: 'start',
+        enableSort: false
     },
     {
-        id: "actions",
-        header: "A",
-        size: 10,
-        minSize: 10,
-        enableResizing: false,
-
-        // cell: ({ row }) => {
-        //     return (
-        //         <DropdownMenu>
-        //             <DropdownMenuTrigger asChild className='flex items-center'>
-        //                 <Button variant="ghost" className="">
-        //                     <span className="sr-only">Open menu</span>
-        //                     <LucideEllipsisVertical />
-        //                 </Button>
-        //             </DropdownMenuTrigger>
-        //         </DropdownMenu>
-        //     )
-        // }
-    }
+        header: "",
+        width: "w-[5rem]",
+        align: 'center',
+        cell: () => {
+            return (
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <div className='h-6 w-6 flex items-center justify-center rounded-md cursor-pointer hover:bg-muted transition-colors ease-in duration-200'>
+                            <LuEllipsisVertical size={12} />
+                        </div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align='end'>
+                        <div className='w-32 h-16'></div>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            )
+        }
+    },
 ];
 
 
 export default function WarehousePage() {
-
-    const table = useReactTable({
-        data,
-        columns,
-        getCoreRowModel: getCoreRowModel(),
-    });
     return (
         <section>
             <div className='flex items-center justify-between mb-5'>
@@ -125,65 +83,12 @@ export default function WarehousePage() {
                     <span>Filters</span>
                 </button>
             </div>
-            <div className='overflow-hidden rounded-md border border-neutral-300'>
-                <Table className='table-fixed w-full'>
-                    <TableHeader>
-                        {
-                            table.getHeaderGroups().map((headerGroup) => (
-                                <TableRow key={headerGroup.id}>
-                                    {headerGroup.headers.map((header) => {
-                                        return (
-                                            <TableHead key={header.id}
-                                                style={{
-                                                    width: `${header.column.getSize()}px`
-                                                }}
-                                            >
-                                                {header.isPlaceholder
-                                                    ? null
-                                                    : flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )}
-                                            </TableHead>
-                                        )
-                                    })}
-                                </TableRow>
-                            ))
-                        }
-                    </TableHeader>
-                    <TableBody>
-                        {/* {table.getRowModel().rows?.length ? (
-                            table.getRowModel().rows.map((row) => (
-                                <TableRow
-                                    key={row.id}
-                                    data-state={row.getIsSelected() && "selected"}
-                                    className='text-neutral-700'
-                                >
-                                    {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}
-
-                                        >
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            ))
-                        ) : (
-                            <TableRow>
-                                <TableCell
-                                    colSpan={columns.length}
-                                    className="h-24 text-center"
-                                >
-                                    No results.
-                                </TableCell>
-                            </TableRow>
-                        )} */}
-                    </TableBody>
-                </Table>
-            </div>
+            <Table
+                columns={columns}
+                data={data}
+                totalRows={100}
+                selectedPage={1}
+            />
         </section >
     )
 }
