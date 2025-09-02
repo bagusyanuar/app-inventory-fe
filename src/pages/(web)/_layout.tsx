@@ -9,7 +9,7 @@ export default function App() {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main className='w-full bg-muted'>
+            <main className='w-full bg-white'>
                 <AppNavbar>
                     {/* <div className='flex flex-col'>
                         <span className='mb-0 font-bold text-sm text-neutral-700'>Welcome back, John</span>
@@ -18,7 +18,8 @@ export default function App() {
                     <NavbarProfile /> */}
                     <div></div>
                     <div className='flex items-center'>
-                        <span className='text-xs text-neutral-500'>Saturday, 30 August 2025</span>
+
+                        <span className='text-xs text-neutral-500 border border-neutral-300 px-3 py-1.5 rounded-md'>Sat, 30 Aug 2025</span>
                     </div>
                 </AppNavbar>
                 <AppContent>

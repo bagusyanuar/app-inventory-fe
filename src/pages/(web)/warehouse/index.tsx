@@ -9,7 +9,7 @@ import {
 } from "@/ui/components/shadcn/ui/breadcrumb"
 import { Link } from 'react-router-dom'
 
-import { LuSearch } from 'react-icons/lu'
+import { LuArrowUpDown, LuSquarePlus, LuFilter, LuEllipsisVertical } from 'react-icons/lu'
 import {
     ColumnDef,
     ColumnFiltersState,
@@ -30,7 +30,13 @@ import {
     TableHeader,
     TableRow,
 } from "@/ui/components/shadcn/ui/table"
-import {Button} from '@/ui/components/shadcn/ui/button';
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+
+} from '@/ui/components/shadcn/ui/dropdown-menu'
+import { Button } from '@/ui/components/shadcn/ui/button';
+import { LucideEllipsisVertical } from 'lucide-react'
 
 type TWarehouse = {
     id: string;
@@ -51,8 +57,35 @@ const data: TWarehouse[] = [
 const columns: ColumnDef<TWarehouse>[] = [
     {
         accessorKey: "name",
-        header: "Name",
+        header: ({ column }) => {
+            return (
+                <div className='text-sm flex items-center gap-1 cursor-pointer'>
+                    <span>Name</span>
+                    <LuArrowUpDown size={14} />
+                </div>
+            )
+        },
         cell: ({ row }) => <div className='text-sm'>{row.getValue('name')}</div>
+    },
+    {
+        id: "actions",
+        header: "A",
+        size: 10,
+        minSize: 10,
+        enableResizing: false,
+
+        // cell: ({ row }) => {
+        //     return (
+        //         <DropdownMenu>
+        //             <DropdownMenuTrigger asChild className='flex items-center'>
+        //                 <Button variant="ghost" className="">
+        //                     <span className="sr-only">Open menu</span>
+        //                     <LucideEllipsisVertical />
+        //                 </Button>
+        //             </DropdownMenuTrigger>
+        //         </DropdownMenu>
+        //     )
+        // }
     }
 ];
 
@@ -68,92 +101,88 @@ export default function WarehousePage() {
         <section>
             <div className='flex items-center justify-between mb-5'>
                 <div>
-                    <PageTitle text='Warehouse' />
-                    <PageSubTitle text='Welcome to warehouse page. You can manage all data warehouse on this page.' />
+                    <p className='text-lg font-semibold text-neutral-900'>Warehouse</p>
+                    <p className='text-xs text-neutral-500'>You can manage all data warehouse on this page.</p>
                 </div>
-                <Breadcrumb>
-                    <BreadcrumbList className='text-sm'>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink asChild>
-                                <Link to="/dashboard">Dashboard</Link>
-                            </BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                            <BreadcrumbPage>Warehouse</BreadcrumbPage>
-                        </BreadcrumbItem>
-                    </BreadcrumbList>
-                </Breadcrumb>
+
             </div>
-            <div className='w-full p-6 bg-white rounded-lg shadow-xl border border-neutral-300'>
-                <p className='text text-neutral-700 font-semibold mb-3'>Data Warehouse</p>
-                <div className='w-full flex items-center justify-between mb-5'>
-                    <div className='flex items-center border border-neutral-300 rounded-md min-w-48'>
-                        <div className='mx-2.5 text-neutral-700'>
-                            <LuSearch size={14} />
-                        </div>
-                        <input
-                            placeholder='search...'
-                            className='flex-1 py-2 focus:ring-0 focus:outline-none text-sm text-neutral-700'
-                        />
+            <div className='w-full flex items-center justify-between mb-3'>
+                {/* <div className='flex items-center border border-neutral-300 rounded-md min-w-48'>
+                    <div className='mx-2.5 text-neutral-700'>
+                        <LuSearch size={14} />
                     </div>
-                    <button className='rounded-md text-sm text-white py-2 px-3.5 bg-brand-500 shadow-md border border-brand-700 cursor-pointer hover:bg-brand-800 hover:border-brand-800 transition-all duration-200 ease-in'>
-                        <span>Add Warehouse</span>
-                    </button>
-                </div>
-                
-                <div className='overflow-hidden rounded-md border border-neutral-300'>
-                    <Table>
-                        <TableHeader>
-                            {
-                                table.getHeaderGroups().map((headerGroup) => (
-                                    <TableRow key={headerGroup.id}>
-                                        {headerGroup.headers.map((header) => {
-                                            return (
-                                                <TableHead key={header.id}>
-                                                    {header.isPlaceholder
-                                                        ? null
-                                                        : flexRender(
-                                                            header.column.columnDef.header,
-                                                            header.getContext()
-                                                        )}
-                                                </TableHead>
-                                            )
-                                        })}
-                                    </TableRow>
-                                ))
-                            }
-                        </TableHeader>
-                        <TableBody>
-                            {table.getRowModel().rows?.length ? (
-                                table.getRowModel().rows.map((row) => (
-                                    <TableRow
-                                        key={row.id}
-                                        data-state={row.getIsSelected() && "selected"}
-                                    >
-                                        {row.getVisibleCells().map((cell) => (
-                                            <TableCell key={cell.id}>
-                                                {flexRender(
-                                                    cell.column.columnDef.cell,
-                                                    cell.getContext()
-                                                )}
-                                            </TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell
-                                        colSpan={columns.length}
-                                        className="h-24 text-center"
-                                    >
-                                        No results.
-                                    </TableCell>
+                    <input
+                        placeholder='search...'
+                        className='flex-1 py-2 focus:ring-0 focus:outline-none text-sm text-neutral-700'
+                    />
+                </div> */}
+                <button className='flex items-center gap-2 rounded-md text-xs text-white py-2.5 px-5 bg-brand-500 shadow-md border border-brand-700 cursor-pointer hover:bg-brand-800 hover:border-brand-800 transition-all duration-200 ease-in'>
+                    <LuSquarePlus size={14} />
+                    <span>New Warehouse</span>
+                </button>
+                <button className='flex items-center gap-2 rounded-md text-xs text-brand-500 py-2.5 px-5 bg-white500 border border-neutral-300 cursor-pointer hover:bg-brand-800 hover:border-brand-800 transition-all duration-200 ease-in'>
+                    <LuFilter size={14} />
+                    <span>Filters</span>
+                </button>
+            </div>
+            <div className='overflow-hidden rounded-md border border-neutral-300'>
+                <Table className='table-fixed w-full'>
+                    <TableHeader>
+                        {
+                            table.getHeaderGroups().map((headerGroup) => (
+                                <TableRow key={headerGroup.id}>
+                                    {headerGroup.headers.map((header) => {
+                                        return (
+                                            <TableHead key={header.id}
+                                                style={{
+                                                    width: `${header.column.getSize()}px`
+                                                }}
+                                            >
+                                                {header.isPlaceholder
+                                                    ? null
+                                                    : flexRender(
+                                                        header.column.columnDef.header,
+                                                        header.getContext()
+                                                    )}
+                                            </TableHead>
+                                        )
+                                    })}
                                 </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </div>
+                            ))
+                        }
+                    </TableHeader>
+                    <TableBody>
+                        {/* {table.getRowModel().rows?.length ? (
+                            table.getRowModel().rows.map((row) => (
+                                <TableRow
+                                    key={row.id}
+                                    data-state={row.getIsSelected() && "selected"}
+                                    className='text-neutral-700'
+                                >
+                                    {row.getVisibleCells().map((cell) => (
+                                        <TableCell key={cell.id}
+
+                                        >
+                                            {flexRender(
+                                                cell.column.columnDef.cell,
+                                                cell.getContext()
+                                            )}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))
+                        ) : (
+                            <TableRow>
+                                <TableCell
+                                    colSpan={columns.length}
+                                    className="h-24 text-center"
+                                >
+                                    No results.
+                                </TableCell>
+                            </TableRow>
+                        )} */}
+                    </TableBody>
+                </Table>
             </div>
         </section >
     )
